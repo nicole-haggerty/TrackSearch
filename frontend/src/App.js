@@ -4,9 +4,7 @@ export default function App() {
   const [list, setList] = useState(true);
   const [list1, setList1] = useState(false);
   const [list2, setList2] = useState(false);
-  const [card, setCard] = useState(false);
   const [players, setPlayers] = useState([]);
-  const [player, setPlayer] = useState({});
   const [players1, setPlayers1] = useState([]);
   const [players2, setPlayers2] = useState([]);
   const [name, setName] = useState('')
