@@ -1,6 +1,6 @@
 
 
 var parsedJSON = require('./tracks.json');
-var players = parsedJSON.tracks;
+var tracks = parsedJSON.tracks;
 
-module.exports = players;
+module.exports = tracks;
