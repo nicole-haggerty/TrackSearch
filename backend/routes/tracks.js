@@ -1,13 +1,13 @@
-// routes/players.js
+// routes/tracks.js
 
 const express = require("express");
 const router = express.Router();
-let players = require("../dummyDatabase");
+let tracks = require("../dummyDatabase");
 
 router.get("/list", async (req, res) => {
   try {
     res.status(200).json({
-      data: players
+      data: tracks
     });
   } catch (err) {
     res.status(400).json({
@@ -21,7 +21,7 @@ router.get("/:artist", async (req, res) => {
   let { artist } = req.params;
   artist = String(artist);
   try {
-    let player = players.filter(player => player.artist.toLowerCase() === artist.toLowerCase());
+    let player = tracks.filter(player => player.artist.toLowerCase() === artist.toLowerCase());
     res.status(200).json({
       data: player
     });
@@ -37,7 +37,7 @@ router.get("/title/:title", async (req, res) => {
     let { title } = req.params;
     title = String(title);
     try {
-      let player = players.filter(player => player.title.toLowerCase() === title.toLowerCase());
+      let player = tracks.filter(player => player.title.toLowerCase() === title.toLowerCase());
       res.status(200).json({
         data: player
       });
