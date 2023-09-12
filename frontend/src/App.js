@@ -4,27 +4,27 @@ export default function App() {
   const [list, setList] = useState(true);
   const [list1, setList1] = useState(false);
   const [list2, setList2] = useState(false);
-  const [players, setPlayers] = useState([]);
-  const [players1, setPlayers1] = useState([]);
-  const [players2, setPlayers2] = useState([]);
+  const [tracks, settracks] = useState([]);
+  const [tracks1, settracks1] = useState([]);
+  const [tracks2, settracks2] = useState([]);
   const [name, setName] = useState('')
   const [theArtist, settheArtist] = useState('')
 
 
   useEffect(() => {
-    fetch("http://localhost:3001/players/list")
+    fetch("http://localhost:3001/tracks/list")
       .then((response) => response.json())
       .then((responseJson) => {
-        setPlayers(responseJson.data);
+        settracks(responseJson.data);
       });
   }, []);
   
 
   let getTitle = () => {
-    fetch(`http://localhost:3001/players/title/${name}`)
+    fetch(`http://localhost:3001/tracks/title/${name}`)
       .then((response) => response.json())
       .then((responseJson) => {
-        setPlayers2(responseJson.data);
+        settracks2(responseJson.data);
         setList(true);
         setList1(false)
         setList2(true);
@@ -32,10 +32,10 @@ export default function App() {
   };
 
   let getArtist = () => {
-    fetch(`http://localhost:3001/players/${theArtist}`)
+    fetch(`http://localhost:3001/tracks/${theArtist}`)
       .then((response) => response.json())
       .then((responseJson) => {
-        setPlayers1(responseJson.data);
+        settracks1(responseJson.data);
         setList1(true);
         setList(true);
         setList2(false);
@@ -64,7 +64,7 @@ export default function App() {
       {list2 ? (
         <div className="list-group">
           <h1><b>Results:</b></h1>
-          {players2.map((player) => (
+          {tracks2.map((player) => (
             <li>
               <b>Artist:</b> { player.artist }, <b>Title:</b> { player.title }
             </li>
@@ -75,7 +75,7 @@ export default function App() {
       {list1 ? (
         <div className="list-group">
           <h1><b>Results:</b></h1>
-          {players1.map((player) => (
+          {tracks1.map((player) => (
             <li>
               
               <b>Artist:</b> { player.artist }, <b>Title:</b> { player.title }
@@ -89,7 +89,7 @@ export default function App() {
         <div className="list-group">
           <br></br>
           <h1><b>Track List:</b></h1>
-          {players.map((player) => (
+          {tracks.map((player) => (
             <li>
               <b>Artist:</b> {player.artist }, <b>Title:</b> { player.title }
             </li>
